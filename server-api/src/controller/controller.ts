@@ -1,7 +1,6 @@
 import { getRepository } from 'typeorm';
 import { Cars } from '../entity/cars';
 import { Request, Response } from 'express';
-import { SSL_OP_TLS_ROLLBACK_BUG } from 'constants';
 
 export const getCars = async (request: Request, response: Response) => {
   const cars = await getRepository(Cars).find();
