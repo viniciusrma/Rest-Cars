@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { Pencil, DoorOpen, PlusSquare, Trash2 } from 'react-bootstrap-icons';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import './index.css';
 
 interface ICar {
   id: number;
@@ -12,6 +15,7 @@ interface ICar {
 
 const Cars: React.FC = () => {
   const [cars, setCars] = useState<ICar[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     loadCars();
@@ -23,10 +27,23 @@ const Cars: React.FC = () => {
     setCars(response.data);
   }
 
+  function newCar() {
+    history.push('cars_form');
+  }
+
+  function editCar(id: number) {
+    history.push(`cars_form/${id}`);
+  }
+
   return (
     <div className="container">
       <br />
-      <h1>Cars Page</h1>
+      <div className="cars-header">
+        <h1>Cars Page</h1>
+        <Button size="sm" variant="dark" onClick={newCar}>
+          <PlusSquare /> New Car
+        </Button>
+      </div>
       <br />
       <Table striped bordered hover className="text-center">
         <thead>
@@ -46,9 +63,15 @@ const Cars: React.FC = () => {
               <td>{car.description}</td>
               <td>{car.year}</td>
               <td>
-                <Button size="sm">Edit</Button>{' '}
-                <Button size="sm"variant="info">View</Button>{' '}
-                <Button size="sm" variant="danger">Delete</Button>
+                <Button size="sm" onClick={() => editCar(car.id)}>
+                  <Pencil /> Edit
+                </Button>{' '}
+                <Button size="sm" variant="info">
+                  <DoorOpen /> View
+                </Button>{' '}
+                <Button size="sm" variant="danger">
+                  <Trash2 /> Delete
+                </Button>
               </td>
             </tr>
           ))}
