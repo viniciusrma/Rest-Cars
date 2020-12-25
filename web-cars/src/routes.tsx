@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Cars from './pages/cars';
 import CarsForm from './pages/cars/form';
+import CarDetail from './pages/cars/detail';
 
 const Routes: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Routes: React.FC = () => {
       <Route path="/cars" exact component={Cars} />
       <Route path="/cars_form" exact component={CarsForm} />
       <Route path="/cars_form/:id" exact component={CarsForm} />
+      <Route path="/cars/:id" exact component={CarDetail} />
     </Switch>
   );
 };

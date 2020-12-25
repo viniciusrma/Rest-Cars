@@ -27,12 +27,21 @@ const Cars: React.FC = () => {
     setCars(response.data);
   }
 
+  async function deleteCar(id: number) {
+    await api.delete(`/cars/${id}`);
+    loadCars();
+  }
+
   function newCar() {
-    history.push('cars_form');
+    history.push('/cars_form');
   }
 
   function editCar(id: number) {
-    history.push(`cars_form/${id}`);
+    history.push(`/cars_form/${id}`);
+  }
+
+  function viewCar(id: number) {
+    history.push(`/cars/${id}`);
   }
 
   return (
@@ -66,10 +75,14 @@ const Cars: React.FC = () => {
                 <Button size="sm" onClick={() => editCar(car.id)}>
                   <Pencil /> Edit
                 </Button>{' '}
-                <Button size="sm" variant="info">
+                <Button
+                  size="sm"
+                  variant="info"
+                  onClick={() => viewCar(car.id)}
+                >
                   <DoorOpen /> View
                 </Button>{' '}
-                <Button size="sm" variant="danger">
+                <Button size="sm" variant="danger" onClick={() => deleteCar(car.id)}>
                   <Trash2 /> Delete
                 </Button>
               </td>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
