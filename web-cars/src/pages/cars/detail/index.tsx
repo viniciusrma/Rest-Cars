@@ -3,7 +3,6 @@ import { Badge, Button, Card } from 'react-bootstrap';
 import { BackspaceFill } from 'react-bootstrap-icons';
 import { useHistory, useParams } from 'react-router-dom';
 import api from '../../../services/api';
-
 interface ICar {
   id: number;
   brand: string;
