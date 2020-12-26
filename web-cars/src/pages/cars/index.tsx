@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button } from 'react-bootstrap';
-import { Pencil, DoorOpen, PlusSquare, Trash2 } from 'react-bootstrap-icons';
+import { Table, Button, Badge } from 'react-bootstrap';
+import { Pencil, DoorOpen, PlusSquare, Trash2, CheckCircle } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './index.css';
@@ -10,6 +10,7 @@ interface ICar {
   brand: string;
   model: string;
   description: string;
+  sold: false;
   year: number;
 }
 
@@ -25,6 +26,11 @@ const Cars: React.FC = () => {
     const response = await api.get('/cars');
     console.log(response);
     setCars(response.data);
+  }
+
+  async function soldCar(id: number) {
+    await api.patch(`/cars/${id}`);
+    loadCars();
   }
 
   async function deleteCar(id: number) {
@@ -60,6 +66,7 @@ const Cars: React.FC = () => {
             <th>Brand</th>
             <th>Model</th>
             <th>Description</th>
+            <th>Sold</th>
             <th>Year</th>
             <th>Actions</th>
           </tr>
@@ -70,6 +77,11 @@ const Cars: React.FC = () => {
               <td>{car.brand}</td>
               <td>{car.model}</td>
               <td>{car.description}</td>
+              <td>
+                <Badge variant={car.sold ? 'danger' : 'success'}>
+                  {car.sold ? 'Sold' : 'In Stock'}
+                </Badge>
+              </td>
               <td>{car.year}</td>
               <td>
                 <Button size="sm" onClick={() => editCar(car.id)}>
@@ -82,7 +94,18 @@ const Cars: React.FC = () => {
                 >
                   <DoorOpen /> View
                 </Button>{' '}
-                <Button size="sm" variant="danger" onClick={() => deleteCar(car.id)}>
+                <Button
+                  size="sm"
+                  variant="success"
+                  onClick={() => soldCar(car.id)}
+                >
+                  <CheckCircle /> Sold
+                </Button>{' '}
+                <Button
+                  size="sm"
+                  variant="danger"
+                  onClick={() => deleteCar(car.id)}
+                >
                   <Trash2 /> Delete
                 </Button>
               </td>

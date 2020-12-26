@@ -10,6 +10,7 @@ interface ICar {
   brand: string;
   model: string;
   description: string;
+  sold: boolean;
   year: number;
 }
 
@@ -24,6 +25,7 @@ const Cars: React.FC = () => {
     brand: '',
     model: '',
     description: '',
+    sold: false,
     year: 0,
   });
 
@@ -33,7 +35,7 @@ const Cars: React.FC = () => {
     }
   }, [id]);
 
-  function updatedCar(e: ChangeEvent<HTMLInputElement>) {
+  function updatedCar(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setCar({
       ...car,
       [e.target.name]: e.target.value,
@@ -56,6 +58,7 @@ const Cars: React.FC = () => {
       brand: response.data.brand,
       model: response.data.model,
       description: response.data.description,
+      sold: response.data.sold,
       year: response.data.year,
     });
   }
