@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import { BackspaceFill } from 'react-bootstrap-icons';
 import api from '../../../services/api';
 import './index.css';
@@ -68,64 +68,66 @@ const Cars: React.FC = () => {
   }
 
   return (
-    <div className="container">
-      <br />
-      <div className="cars-header">
-        <h1>New Car</h1>
-        <Button size="sm" variant="dark" onClick={back}>
-          <BackspaceFill /> Voltar
-        </Button>
-      </div>
-      <br />
-      <div className="container">
-        <Form onSubmit={onSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Brand</Form.Label>
-            <Form.Control
-              type="text"
-              name="brand"
-              value={car.brand}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Model</Form.Label>
-            <Form.Control
-              type="text"
-              name="model"
-              value={car.model}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="description"
-              value={car.description}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Year</Form.Label>
-            <Form.Control
-              type="number"
-              name="year"
-              value={car.year}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
-            />
-          </Form.Group>
-
-          <Button variant="dark" type="submit">
-            Submit
+    <>
+      <Container>
+        <br />
+        <div className="cars-header">
+          <h1>New Car</h1>
+          <Button size="sm" variant="dark" onClick={back}>
+            <BackspaceFill /> Voltar
           </Button>
-        </Form>
-      </div>
-    </div>
+        </div>
+        <br />
+        <div className="container">
+          <Form onSubmit={onSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Brand</Form.Label>
+              <Form.Control
+                type="text"
+                name="brand"
+                value={car.brand}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Model</Form.Label>
+              <Form.Control
+                type="text"
+                name="model"
+                value={car.model}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="description"
+                value={car.description}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Year</Form.Label>
+              <Form.Control
+                type="number"
+                name="year"
+                value={car.year}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCar(e)}
+              />
+            </Form.Group>
+
+            <Button variant="dark" type="submit">
+              Submit
+            </Button>
+          </Form>
+        </div>
+      </Container>
+    </>
   );
 };
 
