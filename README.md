@@ -28,8 +28,8 @@ The project was developed using the following technologies:
 
 - [React](https://reactjs.org/)
 - [NodeJS](https://nodejs.org/en/)
-- [TypeScript](hhttps://www.typescriptlang.org/)
-- [React/Bootstrap](hhttps://react-bootstrap.github.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React/Bootstrap](https://react-bootstrap.github.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Docker](https://hub.docker.com/)
 
