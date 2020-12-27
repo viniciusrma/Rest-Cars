@@ -42,9 +42,7 @@ The project was developed using the following technologies:
 - It is necessary to have the **[Node.js](https://nodejs.org/en/)** installed
 - It is necessary to have the **[Docker](hhttps://hub.docker.com/)** installed
 - It is necessary to have the **[PostgreSQL] instance **[Docker](https://hub.docker.com/_/postgres)** installed.
-
 - It is necessary to have a package manager installed, like **[NPM](https://www.npmjs.com/)** or **[Yarn](https://yarnpkg.com/)**
-
 - It is necessary to have the **[React](https://reactjs.org/)** installed in global way.
 
 1. Cloning the application:
@@ -79,7 +77,7 @@ $ docker run --name postgres -e POSTGRES_PASSWORD=123 -p 5432:5432 -d postgres
 
 $ docker start postgres (notice that postgres here is the name of the DB, not the technology)
 
-# Then you can run the development enrinment by typing:
+# Then you can run the development environment by typing:
 
 $ yarn start:dev
 
