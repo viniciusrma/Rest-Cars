@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { PlusSquare } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
-import Detail from '../cars/detail';
 import './index.css';
+
 interface ICar {
   id: number;
   brand: string;
@@ -12,10 +12,6 @@ interface ICar {
   description: string;
   sold: false;
   year: number;
-}
-
-interface IParamsProps {
-  id: string;
 }
 
 const Home: React.FC = () => {
@@ -58,24 +54,30 @@ const Home: React.FC = () => {
     <div className="container">
       <br />
       <div className="cars-header">
-        <h1>Cars Page</h1>
+        <h1>Cars Cards Page</h1>
         <Button size="sm" variant="dark" onClick={newCar}>
           <PlusSquare /> New Car
         </Button>
       </div>
       <br />
-      <Row>
+      <Row className="section">
         <Col xs={12} md={6}>
           {cars.map((car) => (
-            <Card className="card" onClick={() => console.log('working')}>
-              <Card.Body>{car.brand}</Card.Body>
-              <Card.Body>{car.model}</Card.Body>
-              <Card.Body>{car.year}</Card.Body>
+            <Card
+
+              className="card-general"
+              onClick={() => console.log('working')}
+            >
+              <strong>{car.brand.toUpperCase()}</strong>
+              <h3>{car.model}</h3>
+              <strong>{car.year}</strong>
             </Card>
           ))}
         </Col>
         <Col xs={12} md={6}>
-          <Detail />
+          <Card className="card-details">
+            Trance
+          </Card>
         </Col>
       </Row>
     </div>

@@ -9,8 +9,8 @@ const Header: React.FC = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Item as={Link} className="nav-link" to="/">Home</Nav.Item>
-          <Nav.Link as={Link} className="nav-link" to="/cars">Cars</Nav.Link>
+          <Nav.Item as={Link} className="nav-link" to="/">Cards</Nav.Item>
+          <Nav.Link as={Link} className="nav-link" to="/cars">CRUD</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

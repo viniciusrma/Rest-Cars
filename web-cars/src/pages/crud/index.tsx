@@ -54,7 +54,7 @@ const Cars: React.FC = () => {
     <div className="container">
       <br />
       <div className="cars-header">
-        <h1>Cars Page</h1>
+        <h1>Cars CRUD Page</h1>
         <Button size="sm" variant="dark" onClick={newCar}>
           <PlusSquare /> New Car
         </Button>

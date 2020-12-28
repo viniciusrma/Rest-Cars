@@ -1,0 +1,14 @@
+.section {
+  padding: 30px;
+  background: #ececec;
+}
+
+.card-general:hover {
+  cursor: pointer;
+  padding: 16px;
+}
+
+.card-details {
+  height: 100px;
+}
+

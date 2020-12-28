@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './pages/home';
-import Cars from './pages/cars';
-import CarsForm from './pages/cars/form';
-import CarDetail from './pages/cars/detail';
+import Home from './pages/cards';
+import Cars from './pages/crud';
+import CarsForm from './pages/crud/form';
+import CarDetail from './pages/crud/detail';
 
 const Routes: React.FC = () => {
   return (
