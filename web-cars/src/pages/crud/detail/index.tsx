@@ -18,18 +18,22 @@ const Detail: React.FC = () => {
   const history = useHistory();
   const { id } = useParams<IParamsProps>();
   const [car, setCar] = useState<ICar>();
+
   useEffect(() => {
     findCar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
   function back() {
     history.goBack();
   }
+
   async function findCar() {
     const response = await api.get<ICar>(`/cars/${id}`);
     console.log(response);
     setCar(response.data);
   }
+
   return (
     <div className="container">
       <br />
