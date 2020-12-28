@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
-import { PlusSquare } from 'react-bootstrap-icons';
+import { Card, Col, Row } from 'react-bootstrap';
+import { TagFill } from 'react-bootstrap-icons';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import AddModal from './components/AddModal';
 import './index.css';
 
 interface ICar {
@@ -17,6 +18,16 @@ interface ICar {
 const Home: React.FC = () => {
   const [cars, setCars] = useState<ICar[]>([]);
   const history = useHistory();
+
+  const [descriptionVisibility, setIsDescriptionVisibility] = useState(false);
+  const [currentDescription, setCurrentDescription] = useState<ICar | null>(
+    null,
+  );
+
+  const handleDescription = (description: ICar) => {
+    setCurrentDescription(description);
+    setIsDescriptionVisibility(true);
+  };
 
   useEffect(() => {
     loadCars();
@@ -46,37 +57,63 @@ const Home: React.FC = () => {
     history.push(`/cars_form/${id}`);
   }
 
-  function viewCar(id: number) {
-    history.push(`/cars/${id}`);
-  }
-
   return (
     <div className="container">
       <br />
       <div className="cars-header">
-        <h1>Cars Cards Page</h1>
-        <Button size="sm" variant="dark" onClick={newCar}>
-          <PlusSquare /> New Car
-        </Button>
+        <h1>Vehicles</h1>
+        {/* <PlusCircleFill className="add" size="50" onClick={newCar} /> */}
+        <AddModal />
       </div>
       <br />
       <Row className="section">
         <Col xs={12} md={6}>
+          <strong>Vehicles List</strong>
           {cars.map((car) => (
             <Card
-
               className="card-general"
-              onClick={() => console.log('working')}
+              onClick={() => handleDescription(car)}
             >
-              <strong>{car.brand.toUpperCase()}</strong>
-              <h3>{car.model}</h3>
-              <strong>{car.year}</strong>
+              <div className="flex">
+                <div>
+                  <p className="brand">{car.brand.toUpperCase()}</p>
+                  <p className="model">{car.model}</p>
+                  <p className="year">{car.year}</p>
+                </div>
+                <div className="tag">
+                  <TagFill
+                    className="tagfill"
+                    style={{ color: car.sold ? '#4C8D74' : '#454545' }}
+                  />
+                </div>
+              </div>
             </Card>
           ))}
         </Col>
         <Col xs={12} md={6}>
-          <Card className="card-details">
-            Trance
+          <strong>Details</strong>
+          <Card className="details">
+            <p className="modelDetail">{currentDescription?.model}</p>
+            <br />
+            <div className="flex">
+              <div>
+                <strong>Brand</strong>
+                <p className="brandDetail">
+                  {currentDescription?.brand.toUpperCase()}
+                </p>
+              </div>
+              <div>
+                <strong>Year</strong>
+                <p className="yearDetail">{currentDescription?.year}</p>
+              </div>
+            </div>
+            <br />
+            <div>
+              <strong>Description</strong>
+              <p className="descriptionDetail">
+                {currentDescription?.description}
+              </p>
+            </div>
           </Card>
         </Col>
       </Row>

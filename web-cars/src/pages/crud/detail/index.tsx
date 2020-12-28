@@ -43,23 +43,15 @@ const Detail: React.FC = () => {
       <Card style={{ width: '24rem' }}>
         <Card.Body>
           <Card.Title>{car?.model.toUpperCase()}</Card.Title>
-
           <Card.Subtitle className="mb-2 text-muted">
             {car?.brand}
           </Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">{car?.year}</Card.Subtitle>
-
           <Card.Text>{car?.description}</Card.Text>
-
-          <Card.Subtitle className="mb-2 text-muted">{car?.year}</Card.Subtitle>
-
           <Card.Subtitle className="mb-2 text-muted">{car?.sold}</Card.Subtitle>
-
           <Badge variant={car?.sold ? 'danger' : 'success'}>
             {car?.sold ? 'Sold' : 'In Stock'}
           </Badge>
-
-          <Card.Text>{car?.description}</Card.Text>
         </Card.Body>
       </Card>
     </div>

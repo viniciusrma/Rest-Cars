@@ -1,14 +1,82 @@
+body {
+  background-color: #E2E4E1;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #454545;
+}
+
+strong {
+  font-size: 16px;
+}
+
+p {
+  margin: 0;
+}
+
+.tag {
+  padding-top: 25px;
+  text-align: center;;
+}
+
+.tagfill {
+  height: 25px;
+  width: 25px;
+}
+
+.add:hover {
+  cursor: pointer;
+  color: #4C8D74;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.model {
+  color: #4C8D74;
+  font-size: 16px; 
+  font-weight: bold;
+}
+
+.modelDetail {
+  color: #4C8D74;
+  font-size: 20px; 
+  font-weight: bolder;
+}
 .section {
   padding: 30px;
-  background: #ececec;
+  background-color: #E2E4E1;
+}
+
+.card-general {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
 }
 
 .card-general:hover {
   cursor: pointer;
-  padding: 16px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
-.card-details {
-  height: 100px;
+.card-general:active {
+  background-color: #F1F2F0;
+}
+
+.details {
+  height: 400px;
+  background-color: #F1F2F0;
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+.brandDetail, .yearDetail {
+  color: #8F9597;
+  font-size: 16px;
+}
+
+.descriptionDetail {
+  font-size: 16px;
 }
 
